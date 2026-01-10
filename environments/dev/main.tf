@@ -103,3 +103,33 @@ module "rds" {
 
   tags = local.common_tags
 }
+
+################################################################################
+# Bastion Host - Jump Box for RDS Access
+################################################################################
+
+module "bastion" {
+  source = "../../modules/bastion"
+
+  environment      = local.environment
+  vpc_id           = module.networking.vpc_id
+  public_subnet_id = module.networking.public_subnet_id
+  ssh_public_key   = var.bastion_ssh_public_key
+  allowed_ip_cidr  = var.my_ip_cidr
+
+  tags = local.common_tags
+}
+
+################################################################################
+# Security Group Rule - Allow Bastion to RDS
+################################################################################
+
+resource "aws_security_group_rule" "bastion_to_rds" {
+  type                     = "ingress"
+  from_port                = 5432
+  to_port                  = 5432
+  protocol                 = "tcp"
+  source_security_group_id = module.bastion.security_group_id
+  security_group_id        = module.networking.rds_security_group_id
+  description              = "PostgreSQL access from bastion host"
+}

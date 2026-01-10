@@ -7,7 +7,7 @@
 *.tfstate
 *.tfstate.*
 .terraform/
-.terraform.lock.hcl
+# .terraform.lock.hcl  # Uncomment to ignore; recommended to commit for version locking
 *.tfvars
 !*.tfvars.example
 crash.log

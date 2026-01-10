@@ -91,3 +91,17 @@ variable "rds_multi_az" {
   type        = bool
   default     = false
 }
+
+################################################################################
+# Bastion Variables
+################################################################################
+
+variable "bastion_ssh_public_key" {
+  description = "SSH public key for bastion access (contents of ~/.ssh/id_rsa.pub)"
+  type        = string
+}
+
+variable "my_ip_cidr" {
+  description = "Your IP address in CIDR format for SSH access (e.g., 1.2.3.4/32)"
+  type        = string
+}

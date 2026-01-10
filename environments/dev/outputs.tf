@@ -60,6 +60,25 @@ output "public_subnet_id" {
 }
 
 ################################################################################
+# Bastion Outputs
+################################################################################
+
+output "bastion_public_ip" {
+  description = "Public IP address of the bastion host"
+  value       = module.bastion.public_ip
+}
+
+output "bastion_ssh_command" {
+  description = "SSH command to connect to bastion"
+  value       = module.bastion.ssh_command
+}
+
+output "bastion_rds_tunnel_command" {
+  description = "SSH tunnel command for local RDS access"
+  value       = "ssh -i ~/.ssh/id_rsa -L 5432:${module.rds.db_address}:5432 ec2-user@${module.bastion.public_ip}"
+}
+
+################################################################################
 # Connection String Helper (for local development)
 ################################################################################
 
