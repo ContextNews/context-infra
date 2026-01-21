@@ -79,6 +79,15 @@ output "bastion_rds_tunnel_command" {
 }
 
 ################################################################################
+# GitHub Actions OIDC Outputs
+################################################################################
+
+output "github_actions_role_arn" {
+  description = "IAM Role ARN for GitHub Actions to assume"
+  value       = module.iam_github.role_arn
+}
+
+################################################################################
 # Connection String Helper (for local development)
 ################################################################################
 

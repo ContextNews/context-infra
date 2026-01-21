@@ -105,3 +105,12 @@ variable "my_ip_cidr" {
   description = "Your IP address in CIDR format for SSH access (e.g., 1.2.3.4/32)"
   type        = string
 }
+
+################################################################################
+# GitHub Actions OIDC Variables
+################################################################################
+
+variable "github_repo_name" {
+  description = "The GitHub repository allowed to assume the IAM role (format: username/repo)"
+  type        = string
+}
