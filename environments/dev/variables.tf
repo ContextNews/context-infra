@@ -24,6 +24,12 @@ variable "public_subnet_cidr" {
   default     = "10.0.1.0/24"
 }
 
+variable "public_subnet_cidrs" {
+  description = "CIDR blocks for public subnets (use for ALB in multiple AZs)"
+  type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24"]
+}
+
 variable "private_subnet_cidrs" {
   description = "CIDR blocks for private subnets"
   type        = list(string)
@@ -99,6 +105,12 @@ variable "rds_multi_az" {
 variable "bastion_ssh_public_key" {
   description = "SSH public key for bastion access (contents of ~/.ssh/id_rsa.pub)"
   type        = string
+}
+
+variable "bastion_ami_id" {
+  description = "AMI ID to pin the bastion instance"
+  type        = string
+  default     = "ami-0e94832bad4a4240a"
 }
 
 variable "my_ip_cidr" {

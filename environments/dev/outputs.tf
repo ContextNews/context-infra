@@ -88,6 +88,20 @@ output "github_actions_role_arn" {
 }
 
 ################################################################################
+# FastAPI Outputs
+################################################################################
+
+output "api_alb_dns_name" {
+  description = "Public DNS name of the FastAPI ALB"
+  value       = aws_lb.api.dns_name
+}
+
+output "ecr_repository_url" {
+  description = "ECR repository URL for the FastAPI image"
+  value       = aws_ecr_repository.context_api.repository_url
+}
+
+################################################################################
 # Connection String Helper (for local development)
 ################################################################################
 

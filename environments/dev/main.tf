@@ -59,6 +59,7 @@ module "networking" {
   environment          = local.environment
   vpc_cidr             = var.vpc_cidr
   public_subnet_cidr   = var.public_subnet_cidr
+  public_subnet_cidrs  = var.public_subnet_cidrs
   private_subnet_cidrs = var.private_subnet_cidrs
 
   tags = local.common_tags
@@ -115,6 +116,7 @@ module "bastion" {
   vpc_id           = module.networking.vpc_id
   public_subnet_id = module.networking.public_subnet_id
   ssh_public_key   = var.bastion_ssh_public_key
+  ami_id           = var.bastion_ami_id
   allowed_ip_cidr  = var.my_ip_cidr
 
   tags = local.common_tags
