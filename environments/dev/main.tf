@@ -144,7 +144,7 @@ module "iam_github" {
   source = "../../modules/iam_github"
 
   environment      = local.environment
-  github_repo_name = var.github_repo_name
+  github_repo_subs = var.github_repo_subs
   s3_bucket_arn    = module.s3_data.bucket_arn
 
   tags = local.common_tags

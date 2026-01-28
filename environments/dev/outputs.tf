@@ -115,3 +115,27 @@ output "database_connection_info" {
     note     = "Use TF_VAR_db_password environment variable for password"
   }
 }
+
+################################################################################
+# Frontend Outputs
+################################################################################
+
+output "frontend_bucket_name" {
+  description = "Name of the frontend S3 bucket"
+  value       = module.frontend.bucket_name
+}
+
+output "frontend_bucket_arn" {
+  description = "ARN of the frontend S3 bucket"
+  value       = module.frontend.bucket_arn
+}
+
+output "frontend_cloudfront_domain" {
+  description = "CloudFront domain name for the frontend"
+  value       = module.frontend.cloudfront_domain_name
+}
+
+output "frontend_cloudfront_distribution_id" {
+  description = "CloudFront distribution ID for the frontend"
+  value       = module.frontend.cloudfront_distribution_id
+}

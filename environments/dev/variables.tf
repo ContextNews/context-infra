@@ -122,7 +122,35 @@ variable "my_ip_cidr" {
 # GitHub Actions OIDC Variables
 ################################################################################
 
-variable "github_repo_name" {
-  description = "The GitHub repository allowed to assume the IAM role (format: username/repo)"
+variable "github_repo_subs" {
+  description = "List of GitHub OIDC subject claims allowed to assume the IAM role"
+  type        = list(string)
+}
+
+################################################################################
+# Frontend (React) Variables
+################################################################################
+
+variable "frontend_versioning_enabled" {
+  description = "Enable versioning for the frontend S3 bucket"
+  type        = bool
+  default     = true
+}
+
+variable "frontend_price_class" {
+  description = "CloudFront price class for the frontend"
   type        = string
+  default     = "PriceClass_100"
+}
+
+variable "frontend_enable_ipv6" {
+  description = "Enable IPv6 for the frontend CloudFront distribution"
+  type        = bool
+  default     = true
+}
+
+variable "frontend_default_root_object" {
+  description = "Default root object for the SPA"
+  type        = string
+  default     = "index.html"
 }
