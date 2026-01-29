@@ -143,9 +143,10 @@ resource "aws_security_group_rule" "bastion_to_rds" {
 module "iam_github" {
   source = "../../modules/iam_github"
 
-  environment      = local.environment
-  github_repo_subs = var.github_repo_subs
-  s3_bucket_arn    = module.s3_data.bucket_arn
+  environment         = local.environment
+  github_repo_subs    = var.github_repo_subs
+  s3_bucket_arn       = module.s3_data.bucket_arn
+  frontend_bucket_arn = module.frontend.bucket_arn
 
   tags = local.common_tags
 }

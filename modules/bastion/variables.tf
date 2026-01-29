@@ -33,6 +33,12 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
+variable "ami_id" {
+  description = "Optional AMI ID to pin the bastion instance"
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "Tags to apply to all resources"
   type        = map(string)

@@ -49,11 +49,11 @@ resource "aws_security_group" "bastion" {
   vpc_id      = var.vpc_id
 
   ingress {
-    description = "SSH access from allowed IP"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.allowed_ip_cidr]
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow SSH from anywhere for GitHub Actions and local dev"
   }
 
   egress {
@@ -74,7 +74,7 @@ resource "aws_security_group" "bastion" {
 ################################################################################
 
 resource "aws_instance" "bastion" {
-  ami                         = data.aws_ami.amazon_linux_2023.id
+  ami                         = var.ami_id != null ? var.ami_id : data.aws_ami.amazon_linux_2023.id
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.bastion.key_name
   subnet_id                   = var.public_subnet_id

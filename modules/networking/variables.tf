@@ -19,6 +19,12 @@ variable "public_subnet_cidr" {
   default     = "10.0.1.0/24"
 }
 
+variable "public_subnet_cidrs" {
+  description = "CIDR blocks for public subnets (use for multi-AZ)"
+  type        = list(string)
+  default     = null
+}
+
 variable "private_subnet_cidrs" {
   description = "CIDR blocks for private subnets (requires 2 for RDS Multi-AZ)"
   type        = list(string)

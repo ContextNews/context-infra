@@ -12,8 +12,9 @@ resource "aws_db_parameter_group" "postgres" {
   description = "PostgreSQL parameter group for ${var.environment}"
 
   parameter {
-    name  = "shared_preload_libraries"
-    value = "pg_stat_statements"
+    name         = "shared_preload_libraries"
+    value        = "pg_stat_statements"
+    apply_method = "pending-reboot"
   }
 
   tags = merge(var.tags, {
